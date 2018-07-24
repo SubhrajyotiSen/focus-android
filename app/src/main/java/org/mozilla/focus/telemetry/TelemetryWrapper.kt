@@ -61,7 +61,7 @@ object TelemetryWrapper {
     private const val HISTOGRAM_MIN_INDEX = 0
 
     private val isEnabledByDefault: Boolean
-        get() = !AppConstants.isKlarBuild()
+        get() = !AppConstants.isKlarBuild
 
     private object Category {
         val ACTION = "action"
@@ -193,7 +193,7 @@ object TelemetryWrapper {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
             return preferences.getBoolean(
-                    resources.getString(R.string.pref_key_telemetry), isEnabledByDefault) && !AppConstants.isDevBuild()
+                    resources.getString(R.string.pref_key_telemetry), isEnabledByDefault) && !AppConstants.isDevBuild
         } finally {
             StrictMode.setThreadPolicy(threadPolicy)
         }
@@ -225,7 +225,7 @@ object TelemetryWrapper {
 
             val configuration = TelemetryConfiguration(context)
                     .setServerEndpoint("https://incoming.telemetry.mozilla.org")
-                    .setAppName(if (AppConstants.isKlarBuild()) TELEMETRY_APP_NAME_KLAR else TELEMETRY_APP_NAME_FOCUS)
+                    .setAppName(if (AppConstants.isKlarBuild) TELEMETRY_APP_NAME_KLAR else TELEMETRY_APP_NAME_FOCUS)
                     .setUpdateChannel(BuildConfig.BUILD_TYPE)
                     .setPreferencesImportantForTelemetry(
                             resources.getString(R.string.pref_key_search_engine),
@@ -246,7 +246,7 @@ object TelemetryWrapper {
                     .setCollectionEnabled(telemetryEnabled)
                     .setUploadEnabled(telemetryEnabled)
                     .setBuildId(TelemetryConfiguration(context).buildId +
-                    (if (AppConstants.isGeckoBuild(context))
+                    (if (AppConstants.isGeckoBuild)
                         ("-" + TELEMETRY_APP_ENGINE_GECKOVIEW) else ""))
 
             val serializer = JSONPingSerializer()

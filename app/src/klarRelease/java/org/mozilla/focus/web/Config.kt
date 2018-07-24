@@ -6,4 +6,5 @@ package org.mozilla.focus.web
 
 object Config {
     const val DEFAULT_NEW_RENDERER = false
+    const val EXPERIMENT_DESCRIPTOR_GECKOVIEW_ENGINE = "ad86a328-fda6-4b79-86f1-2a618c2dbaa7"
 }

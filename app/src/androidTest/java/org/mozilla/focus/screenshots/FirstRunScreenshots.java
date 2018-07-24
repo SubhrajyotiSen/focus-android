@@ -39,8 +39,8 @@ public class FirstRunScreenshots extends ScreenshotTest {
                     .getApplicationContext();
 
             // This test is for webview only for now.
-            org.junit.Assume.assumeTrue(!AppConstants.isGeckoBuild(appContext.getApplicationContext()) &&
-                    !AppConstants.isKlarBuild());
+            org.junit.Assume.assumeTrue(!AppConstants.INSTANCE.isGeckoBuild() &&
+                    !AppConstants.INSTANCE.isKlarBuild());
         }
     };
 
